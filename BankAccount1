@@ -1,4 +1,4 @@
-
+// bank account 1
 public class BankAccount {
 	
 	private int accountno;
@@ -21,10 +21,10 @@ public class BankAccount {
 	//BankAccount act1=new BankAccount(1001, "Sheetal", "S@gmail.com", 899999	, 50000);
 	
 	public BankAccount(int accountno,String name,String email,long contactno,double balance)
-	{   //Every class member gets a hidden parameter: the ‘this’ reference.
+	{   //Every class member gets a hidden parameter: the ï¿½thisï¿½ reference.
 		//conflict:data member name and argument name is same
-		//‘this’ points to the current object.	
-		//‘this’ always holds address of an object which  invokes the member  function
+		//ï¿½thisï¿½ points to the current object.	
+		//ï¿½thisï¿½ always holds address of an object which  invokes the member  function
 		this.accountno=accountno;//avoid conflict  is it act1.accountno=1001
 		this.name=name;//remove shadowing of instance fields i.e conflict
 		this.balance=balance;
