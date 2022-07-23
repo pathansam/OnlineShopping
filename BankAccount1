@@ -1,0 +1,69 @@
+
+public class BankAccount {
+	
+	private int accountno;
+	private String name,email;
+	private long contactno;
+	private double balance;
+
+	//default constr
+	public BankAccount()
+	{
+		System.out.println("---Default constr----");
+		accountno=101;
+		name="ram";
+		email="ram@gmail.com";
+		contactno=1304902349;
+		balance=1000;
+		
+	}
+	//parameterised
+	//BankAccount act1=new BankAccount(1001, "Sheetal", "S@gmail.com", 899999	, 50000);
+	
+	public BankAccount(int accountno,String name,String email,long contactno,double balance)
+	{   //Every class member gets a hidden parameter: the ‘this’ reference.
+		//conflict:data member name and argument name is same
+		//‘this’ points to the current object.	
+		//‘this’ always holds address of an object which  invokes the member  function
+		this.accountno=accountno;//avoid conflict  is it act1.accountno=1001
+		this.name=name;//remove shadowing of instance fields i.e conflict
+		this.balance=balance;
+		this.contactno=contactno;
+		this.email=email;
+	}
+	
+	public void display()
+	{
+		System.out.println(this.accountno+"  "+this.name+"   "+this.email+"    "+this.contactno+"   "+this.balance);
+	}
+	
+	public void deposite(double amount)
+	{
+		
+		this.balance=this.balance+amount;
+		System.out.println("After Deposite:"+this.balance);
+	}
+	
+
+	
+	//act1.transferMoney( amt,act2);
+	public void transferMoney(double amount,BankAccount reciver)
+	{//how can i access balance of sender
+		//sender balance we will get using this.balane:Yes
+		this.balance=this.balance-amount;//money will get deducted from sender account
+	  //how we can get reciver balanace	
+		
+		reciver.balance=reciver.balance+amount;//money will get added in reciver account
+		
+	System.out.println("Money get Transfer  from :"+this.name +"    to:"+reciver.name);	
+	}
+	
+	
+	
+}
+
+
+
+
+
+

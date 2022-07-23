@@ -1,0 +1,109 @@
+import java.util.Scanner;
+
+public class TestBankApplication {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		BankAccount[] axisBank = new BankAccount[5];
+		//
+		System.out.println(
+				"1 :create account 2: display Account 3:names  4: credilt limt 5:edit climit 6: transfer money");
+		boolean flag = true;
+		int index = 0;
+		Scanner sc = new Scanner(System.in);
+		while (flag == true) {
+			System.out.println("Enter Choice:");
+			int ch = sc.nextInt();
+			switch (ch) {
+			case 1:
+				if (index < axisBank.length) {
+					System.out.println("Enter ActId NAme  Balance CLimit");
+					BankAccount act = new BankAccount(sc.nextInt(), sc.next(), sc.nextDouble(), sc.nextDouble());
+					axisBank[index] = act;
+					index++;
+				} else {
+					System.out.println("---full-----");
+				}
+				break;
+			case 2:
+				for (int i = 0; i < index; i++) {
+					axisBank[i].display();
+				}
+				break;
+			case 3:
+				// System.out.println("1 :create account 2: display Account 3:names 4: credilt
+				// limt 5:edit climit");
+				for (int i = 0; i < index; i++) {
+					System.out.println(axisBank[i].getName());
+				}
+				break;
+			case 4:
+				for (int i = 0; i < index; i++) {
+					System.out.println(axisBank[i].getCreditLimit());
+				}
+				break;
+
+			case 5:
+				boolean status = false;
+				System.out.println("Enter ActId to change credit limit");
+				int actid = sc.nextInt();
+
+				for (int i = 0; i < index; i++) {
+					// search actid here in array 1 2 3 4 5
+					if (axisBank[i].getActno() == actid) {
+						System.out.println("Enter New CreditLimit:");
+						double limit = sc.nextDouble();
+						axisBank[i].setCreditLimit(limit);
+						System.out.println("-----limit updated-------" + axisBank[i].getCreditLimit());
+						status = true;
+						break;
+					} else {
+						status = false; //
+					}
+				}
+				if (status == false) {
+					System.out.println("Not Exist......");
+				}
+				break;
+			case 6:// accept sender acct no and amount to transefr
+					// accept reciver acctno
+				System.out.println("Act No Of Sender:");
+				int senderNo = sc.nextInt();
+				for (int i = 0; i < index; i++) {
+					// chk sender is present or not
+
+					if (axisBank[i].getActno() == senderNo) {
+						// if present
+						System.out.println("Enter Amount to Transfer:");
+						double amount = sc.nextDouble();
+						// accept reciver actno
+						System.out.println("Enter Reciver ActNO:");
+						int reciverActNo = sc.nextInt();
+						
+						//chk reciver act is present in array or not
+						for(int r=0;r<index;r++)
+						{
+							//this for loop is for reciver
+							if(axisBank[r].getActno()==reciverActNo)
+							{
+								//reciver is present
+								
+							axisBank[i].moneyTranser(amount, axisBank[r]);
+							System.out.println("----money transfer done-----");
+							break;
+							}
+						}
+						
+
+					}
+
+				}
+
+			}// switch
+
+		} // while
+
+	}
+
+}
