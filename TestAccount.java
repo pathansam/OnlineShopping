@@ -6,6 +6,9 @@ public class TestAccount {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //create object of BankAccount
+  
+    System.out.println("Testing clone");
+     System.out.println("Testing clone");
 
     BankAccount act1;
     act1=new BankAccount();
